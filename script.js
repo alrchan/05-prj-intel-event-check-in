@@ -30,7 +30,7 @@ form.addEventListener("submit", function (event) {
   console.log("New team count: ", newTotal);
   
   
-  const message = 'Welcome, ${name} from ${teamName}';
+  const message = "Welcome, ${name} from ${teamName}";
   console.log(message);
 
 
