@@ -8,9 +8,9 @@ const maxCount = 50;
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const name = nameInput.value;
+  const name = nameInput.value.trim();
   const team = teamSelect.value;
-  const teamName = teamSelect.selectedOptions(0).text;
+  const teamName = teamSelect.selectedOptions[0].text;
 
   console.log(name, teamName);
 
@@ -18,30 +18,20 @@ form.addEventListener("submit", function (event) {
   console.log("Total check-ins: ", count);
 
   const percentage = Math.round((count / maxCount) * 100) + "%";
-  console.log('Progress: ${percentage}');
+  console.log(`Progress: ${percentage}`);
 
   const teamCounter = document.getElementById(team + "Count");
-  teamCounter.textContent = parseInt(teamCounter.textContent) + 1;
+  const previous = parseInt(teamCounter.textContent) || 0;
+  const newTotal = previous + 1;
+  teamCounter.textContent = newTotal;
   
-  const current = parseInt(teamCounter.textContent);
-  console.log("Previous team count: ", current)
-  
-  const newTotal = current + 1;
+  console.log("Previous team count: ", previous);
   console.log("New team count: ", newTotal);
   
-  
-  const message = "Welcome, ${name} from ${teamName}";
+  const message = `Welcome, ${name} from ${teamName}`;
   console.log(message);
 
-
-
-  
+  alert(message);
 
   form.reset();
-
-
-  
-
-  
-
 });
